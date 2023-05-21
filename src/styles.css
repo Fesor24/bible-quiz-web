@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,200;1,600;1,800&display=swap');
+
+
+.btn{
+  @apply p-3 px-6 pt-2 text-white cursor-pointer bg-darkblue rounded-full self-baseline shadow-lg shadow-gray-500 hover:bg-lightdarkblueSecondary ease-in-out duration-300;
+}
+
+.btn-sec{
+  @apply p-3 px-6 pt-2 text-darkblue font-semibold cursor-pointer bg-white rounded-full self-baseline shadow-2xl hover:bg-gray-200 ease-in-out duration-300;
+}
+

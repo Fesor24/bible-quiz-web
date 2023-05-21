@@ -1,0 +1,45 @@
+<!-- Navbar -->
+<nav class="relative container mx-auto p-6">
+  <!-- Flex container -->
+  <div class="flex items-center justify-between">
+    <!-- Logo -->
+    <div class="pt-2 flex">
+      <img class="h-7" src="../assets/gtcc_logo.png" alt="">
+      <a href="#" class="ml-2 font-semibold text-darkblue text-xl">GTCC</a>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="hidden space-x-6 md:flex">
+      <a href="#hero" class="uppercase font-medium cursor-pointer hover:text-darkblue">Home</a>
+      <a href="#features" class=" uppercase font-medium cursor-pointer hover:text-darkblue">Sections</a>
+      <a href="#" class="uppercase font-medium cursor-pointer hover:text-darkblue">Verse of the Day</a>
+    </div>
+
+    <!-- Button -->
+    <a class="hidden btn md:block">Login</a>
+
+    <!-- Hamburger Icon -->
+      <div (click)="toggleMenu()" class="md:hidden">
+        <i *ngIf="isVisible;else tog" class="text-darkblue text-2xl fa solid fa-times"></i>
+
+        <ng-template #tog>
+          <i class="text-2xl text-darkblue fa solid fa-bars"></i>
+        </ng-template>
+      </div>
+
+
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden" *ngIf="isVisible">
+    <div class="absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white
+    sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
+    <a href="#hero">Home</a>
+    <a href="#features">Sections</a>
+    <a href="">Verse of the Day</a>
+    <a href="">Login</a>
+
+    </div>
+  </div>
+</nav>
