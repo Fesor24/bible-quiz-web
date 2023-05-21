@@ -3,14 +3,12 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
+  @Input() title!: string;
 
-  @Input() title!:string
+  @Input() description!: string;
 
-  @Input() description!:string
-
-  ball = "Thos is a abll"
-
+  @Input() link!: string;
 }

@@ -10,9 +10,12 @@
 
     <!-- Menu Items -->
     <div class="hidden space-x-6 md:flex">
-      <a href="#hero" class="uppercase font-medium cursor-pointer hover:text-darkblue">Home</a>
-      <a href="#features" class=" uppercase font-medium cursor-pointer hover:text-darkblue">Sections</a>
-      <a href="#" class="uppercase font-medium cursor-pointer hover:text-darkblue">Verse of the Day</a>
+      <a routerLink="/" class="uppercase font-medium cursor-pointer hover:text-darkblue"
+      routerLinkActive="text-darkblue" [routerLinkActiveOptions]="{exact:true}">Home</a>
+      <a routerLink="/section" class=" uppercase font-medium cursor-pointer hover:text-darkblue"
+      routerLinkActive="text-darkblue">Sections</a>
+      <a routerLink="/daily-verse" class="uppercase font-medium cursor-pointer hover:text-darkblue"
+      routerLinkActive="text-darkblue">Verse of the Day</a>
     </div>
 
     <!-- Button -->
@@ -35,9 +38,9 @@
   <div class="md:hidden" *ngIf="isVisible">
     <div class="absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white
     sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
-    <a href="#hero">Home</a>
-    <a href="#features">Sections</a>
-    <a href="">Verse of the Day</a>
+    <a routerLink="/">Home</a>
+    <a href="/sections">Sections</a>
+    <a href="/daily-verse">Verse of the Day</a>
     <a href="">Login</a>
 
     </div>
