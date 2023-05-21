@@ -1,1 +1,35 @@
-<p>biblequizzes-questions works!</p>
+<div class="container mx-auto flex flex-col space-y-6 pb-10">
+  <ng-container *ngIf="thousandQuestions">
+    <div>
+    <p class="text-center text-darkblue text-3xl font-extrabold">00:{{timer}}</p>
+  </div>
+  <!-- Buttons -->
+  <div class="flex items-center justify-center space-x-6">
+    <p class="bg-darkblue text-white px-5 py-4 rounded-full font-semibold text-xl md:text-2xl"
+    (click) = "handleNext()"><i class="fa-solid fa-arrow-right"></i></p>
+    <p class="bg-darkblue text-white px-5 py-4 rounded-full font-semibold text-xl md:text-2xl"
+    (click)="handlePrevious()"><i class="fa-solid fa-arrow-left"></i></p>
+    <p class="bg-darkblue text-white px-5 py-4 rounded-full font-semibold text-xl md:text-2xl"><i class="fa-sharp fa-solid fa-floppy-disk"></i></p>
+  </div>
+
+  <!-- Question -->
+  <div class="px-8 md:px-10" *ngIf="thousandQuestions">
+    <p class="text-2xl text-darkblue font-bold tracking-wide leading-relaxed md:text-2xl md:font-semibold">{{thousandQuestions[index].question}}</p>
+  </div>
+
+  <!-- Answer -->
+  <div class="px-8 md:px-10" *ngIf="thousandQuestions && showAnswer">
+    <p class="text-xl text-darkGrayishBlue font-medium">{{thousandQuestions[index].answer}}</p>
+  </div>
+
+  <!-- Buttons -->
+
+  <div class="flex flex-col space-y-4 px-8 justify-center items-center md:flex-row md:space-x-4 md:space-y-0">
+    <button class="btn" (click)= "handleDisplayAnswer()">Display Answer</button>
+    <button class="btn">Save Question</button>
+  </div>
+
+  </ng-container>
+  <!-- Timer -->
+
+</div>

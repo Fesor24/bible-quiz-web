@@ -1,3 +1,5 @@
+
+<ng-container #myContainer>
 <!-- Hero Section -->
 <section id="hero">
   <!-- Flex Container -->
@@ -36,7 +38,7 @@
       [link]="'/section/biblequizzes'"></app-card>
       <app-card [title]="'Author'" [description]="'The author has contributed to questions in this section'"
       [link]="'/section/fesor'"></app-card>
-      <app-card [title]="'Revise'" [description]="'Questions missed from other sections will be added here for you to look over again'"
+      <app-card [title]="'Saved'" [description]="'Saved questions can be conveniently accessed at any time in this section'"
       [link]="'/section/revision'"></app-card>
     </div>
   </div>
@@ -61,7 +63,7 @@
 
       <app-instructions [messageNumber] = "'2'" [messageTitle] = "'Question Tracker'" [messageDescription] = "'A side bar is provided to help you track your progress.'"></app-instructions>
 
-      <app-instructions [messageNumber] = "'3'" [messageTitle] = "'Missed Section'" [messageDescription] = "'If you are unsure about any question and would like to revisit it, click on the \'Wrong\' button, and you will find it in the \'Missed\' section.'"></app-instructions>
+      <app-instructions [messageNumber] = "'3'" [messageTitle] = "'Saved Section'" [messageDescription] = "'You can save questions you would like to revisit, click on the \'Save Question\' button, and you will find it in the \'Saved\' section.'"></app-instructions>
 
 
 
@@ -130,3 +132,6 @@
   <p class="text-white text-center p-3">Developed by <a href="mailto:onafesowale@gmail.com" class="text-lightdarkblue">Wale</a>
 </p>
 </section>
+
+
+</ng-container>

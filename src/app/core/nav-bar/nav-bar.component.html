@@ -3,10 +3,10 @@
   <!-- Flex container -->
   <div class="flex items-center justify-between">
     <!-- Logo -->
-    <div class="pt-2 flex">
+    <a class="pt-2 flex cursor-pointer outline-none border-none"routerLink="/">
       <img class="h-7" src="../assets/gtcc_logo.png" alt="">
-      <a href="#" class="ml-2 font-semibold text-darkblue text-xl">GTCC</a>
-    </div>
+      <p href="#" class="ml-2 font-semibold text-darkblue text-xl">GTCC</p>
+    </a>
 
     <!-- Menu Items -->
     <div class="hidden space-x-6 md:flex">
@@ -38,10 +38,10 @@
   <div class="md:hidden" *ngIf="isVisible">
     <div class="absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white
     sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
-    <a routerLink="/">Home</a>
-    <a href="/sections">Sections</a>
-    <a href="/daily-verse">Verse of the Day</a>
-    <a href="">Login</a>
+    <a routerLink="/" (click) ="toggleMenu()">Home</a>
+    <a routerLink="/section" (click) ="toggleMenu()">Sections</a>
+    <a routerLink="/daily-verse" (click) ="toggleMenu()">Verse of the Day</a>
+    <a routerLink="" (click) ="toggleMenu()">Login</a>
 
     </div>
   </div>
