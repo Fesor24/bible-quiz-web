@@ -1,6 +1,7 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { SectionService } from '../section.service';
 import { IQuestion } from 'src/app/shared/models/question';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-biblequizzes-questions',
@@ -10,20 +11,15 @@ import { IQuestion } from 'src/app/shared/models/question';
 export class BiblequizzesQuestionsComponent implements OnInit {
   thousandQuestions!: IQuestion[];
 
-  constTimerValue = 10;
-
   index = 0;
 
-  timer = 10;
+  constructor(
+    private sectionService: SectionService
+  ) {}
 
-  intervalId:any;
-
-  showAnswer = false;
-
-  constructor(private sectionService: SectionService, private ngZone: NgZone) {}
   ngOnInit(): void {
     this.getThousandQuestions();
-    this.startTimer();
+    this.getIndex();
   }
 
   getThousandQuestions() {
@@ -37,50 +33,11 @@ export class BiblequizzesQuestionsComponent implements OnInit {
     });
   }
 
-  handleNext() {
-    this.showAnswer=false;
-    this.index++;
-    this.timer = this.constTimerValue;
-    this.startTimer()
-  }
+  getIndex() {
+    const index = localStorage.getItem('section_a_index');
 
-  handlePrevious() {
-
-    if(this.index == 0){
-      this.index = 0
+    if (index) {
+      this.index = parseInt(index);
     }
-    else{
-      this.index--;
-    }
-
   }
-
-  handleDisplayAnswer(){
-    this.showAnswer = true;
-    this.stopTimer();
-  }
-
-  startTimer(){
-    this.ngZone.runOutsideAngular(() => {
-      this.updateTimer();
-    })
-  }
-
-  updateTimer(){
-    this.ngZone.run(() => {
-      this.timer--;
-      if(this.timer > 0){
-        this.intervalId = setTimeout(() => {
-          console.log(this.timer)
-          this.updateTimer();
-        }, 1000)
-
-      }
-    })
-  }
-
-  stopTimer(){
-    clearInterval(this.intervalId);
-  }
-
 }

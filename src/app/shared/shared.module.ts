@@ -15,7 +15,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     CardComponent,
-    InstructionsComponent
+    InstructionsComponent,
+    QuestionComponent
   ],
 })
 export class SharedModule { }

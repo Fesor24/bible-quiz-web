@@ -6,6 +6,8 @@ import { SectionComponent } from './section.component';
 import { FesorQuestionsComponent } from './fesor-questions/fesor-questions.component';
 import { RevisionQuestionsComponent } from './revision-questions/revision-questions.component';
 import { BiblequizzesQuestionsComponent } from './biblequizzes-questions/biblequizzes-questions.component';
+import { CoreModule } from '../core/core.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { BiblequizzesQuestionsComponent } from './biblequizzes-questions/biblequ
   ],
   imports: [
     CommonModule,
-    SectionRoutingModule
+    SectionRoutingModule,
+    CoreModule,
+    SharedModule
   ]
 })
 export class SectionModule { }
