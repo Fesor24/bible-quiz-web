@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { environment } from '../environments/environment';
 import { IApiResponse } from '../shared/models/api-response';
-import { BehaviorSubject, ReplaySubject, map, of } from 'rxjs';
+import { ReplaySubject, map } from 'rxjs';
 import { IAccount } from '../shared/models/account';
 import { ToastrService } from 'ngx-toastr';
 

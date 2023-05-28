@@ -20,7 +20,7 @@
 }
 
 .input-bar{
-  @apply min-w-full shadow-xl font-medium text-xl appearance-none border rounded-lg py-4 px-10 text-gray-800 leading-tight;
+  @apply w-2/3 shadow-xl font-medium text-sm appearance-none border rounded-lg py-4 px-10 text-gray-800 leading-tight;
 }
 
 

@@ -16,7 +16,7 @@ export class QuestionComponent implements OnInit, OnDestroy, DoCheck {
   ) {}
 
 
-  constTimerValue = 10;
+  constTimerValue = 30;
 
   @Input() index = 0;
 
