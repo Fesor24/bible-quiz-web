@@ -20,7 +20,7 @@ export class QuestionComponent implements OnInit, OnDestroy, DoCheck {
 
   @Input() index = 0;
 
-  timer = 10;
+  timer = 30;
 
   isAvailable: boolean = false;
 
@@ -72,10 +72,14 @@ export class QuestionComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   handlePrevious() {
+    this.stopTimer();
+    this.showAnswer = false;
     if (this.index == 0) {
       this.index = 0;
     } else {
       this.index--;
+       this.timer = this.constTimerValue;
+       this.startTimer();
     }
   }
 
