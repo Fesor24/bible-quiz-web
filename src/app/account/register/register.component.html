@@ -1,0 +1,37 @@
+<div class="container mx-auto h-screen w-full flex flex-col justify-start mt-48 space-y-6 items-center">
+    <h1 class="text-darkblue font-bold text-4xl uppercase">Register</h1>
+    <div class="flex flex-col space-y-8">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="rounded px-6 mb-4 flex flex-col space-y-8 md:w-full items-center justify-center">
+        <input formControlName="email" type="text"
+        [ngClass]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required'] || registerForm.get('email')?.errors?.['pattern'] ?
+        'border-red-600 input-bar focus:outline-darkblue focus:shadow-outline md:px-20 md:py-4 md:w-full' :
+        'input-bar focus:outline-darkblue focus:shadow-outline md:px-20 md:py-4 md:w-full'"
+        placeholder="Enter your email">
+        <span class="text-red-600 font-semibold" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']">
+          Email is a required field
+        </span>
+         <span class="text-red-600 font-semibold" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['pattern']">
+          Invalid email address
+        </span>
+
+        <input
+        formControlName="password"
+        type="password"
+        [ngClass]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['required'] || registerForm.get('password')?.errors?.['minlength'] ?
+        'input-bar border-red-600 focus:outline-darkblue focus:shadow-outline md:px-20 md:py-4 md:w-full' :
+        'input-bar focus:outline-darkblue focus:shadow-outline md:px-20 md:py-4 md:w-full' "
+        placeholder="Enter your password">
+        <span class="text-red-600 font-semibold" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['required']">
+          Password is a required field
+        </span>
+         <span class="text-red-600 font-semibold" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['minlength']">
+          Minimum of 6 characters
+        </span>
+
+        <button [disabled]="registerForm.invalid"  [ngClass]="registerForm.invalid ? 'btn-disabled mx-auto':'btn mx-auto'" type="submit">Proceed</button>
+      </form>
+
+      <p class="font-semibold px-8 text-lg md:text-xl text-center">Have an existing account? <span class="cursor-pointer text-darkblue" routerLink="/account/login">Click to login</span></p>
+    </div>
+
+</div>

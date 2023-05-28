@@ -23,14 +23,21 @@ export class BiblequizzesQuestionsComponent implements OnInit {
   }
 
   getThousandQuestions() {
-    this.sectionService.getThousandQuestions().subscribe((response) => {
-      if (response?.successful) {
-        this.thousandQuestions = response.result as IQuestion[];
-        console.log(response.result);
-      } else {
-        console.log('error', response?.errorMessage);
-      }
-    });
+    const token = localStorage.getItem('token');
+
+    if(token){
+         this.sectionService
+           .getThousandQuestions(token)
+           .subscribe((response) => {
+             if (response?.successful) {
+               this.thousandQuestions = response.result as IQuestion[];
+               console.log(response.result);
+             } else {
+               console.log('error', response?.errorMessage);
+             }
+           });
+    }
+
   }
 
   getIndex() {

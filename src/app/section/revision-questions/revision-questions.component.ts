@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SectionService } from '../section.service';
-import { IQuestion } from 'src/app/shared/models/question';
+import { IQuestion, ISaveQuestion } from 'src/app/shared/models/question';
 
 @Component({
   selector: 'app-revision-questions',
@@ -18,14 +18,20 @@ export class RevisionQuestionsComponent implements OnInit {
   }
 
   getSavedQuestions(){
-    this.sectionService.getSavedQuestions().subscribe((response) => {
-      if(response?.successful){
-        this.savedQuestions = response.result as IQuestion[];
-      }
-      else{
-        console.log(response?.errorMessage);
-      }
-    })
-  }
+
+    const token = localStorage.getItem('token');
+
+    if(token){
+      this.sectionService.getSavedQuestions(token).subscribe((response) => {
+        if (response?.successful) {
+          this.savedQuestions = response.result as IQuestion[];
+        } else {
+          console.log(response?.errorMessage);
+        }
+      });
+    }
+    }
+
+
 
 }

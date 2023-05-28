@@ -1,0 +1,12 @@
+<input
+[type]="type"
+(input)="onChange($event)"
+(blur) = "onTouched()"
+id="{{label}}"
+#input
+placeholder="{{label}}"
+class="w-11/12 shadow-xl font-medium text-xl appearance-none border rounded-lg py-4 px-10 text-gray-800 leading-tight
+        focus:outline-darkblue focus:shadow-outline md:px-20 md:py-4 md:w-full" placeholder="Enter your email">
+<div *ngIf="(controlDir && controlDir.control && !controlDir.control.valid && controlDir.control.touched)">
+  <!-- <span *ngIf="controlDir.control.errors['required']">{{label}} is required</span> -->
+</div>

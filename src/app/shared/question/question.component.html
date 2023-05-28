@@ -1,20 +1,22 @@
-<div class="container mx-auto flex flex-col space-y-6 pb-10">
-  <ng-container *ngIf="questions">
+
+<ng-container *ngIf="isAvailable;else noQuestions">
+  <div class="container mx-auto flex flex-col space-y-6 pb-10 mt-32 md:mt-24">
+  <ng-container *ngIf="questions && !showCongratsPage;else congratsPage">
     <div>
     <p class="text-center text-darkblue text-3xl font-extrabold">00:{{setTimerValue(timer)}}</p>
   </div>
   <!-- Buttons -->
   <div class="flex items-center justify-center space-x-6">
-    <p class="bg-darkblue text-white px-5 py-4 rounded-full font-semibold text-xl md:text-2xl"
+    <p class="bg-darkblue text-white px-5 py-4 cursor-pointer rounded-full font-semibold text-xl md:text-xl md:px-4 md:py-3"
     (click) = "handleNext()"><i class="fa-solid fa-arrow-right"></i></p>
-    <p class="bg-darkblue text-white px-5 py-4 rounded-full font-semibold text-xl md:text-2xl"
+    <p class="bg-darkblue text-white cursor-pointer px-5 py-4 rounded-full font-semibold text-xl md:text-xl md:px-4 md:py-3"
     (click)="handlePrevious()"><i class="fa-solid fa-arrow-left"></i></p>
-    <p class="bg-darkblue text-white px-5 py-4 rounded-full font-semibold text-xl md:text-2xl"
+    <p class="bg-darkblue text-white px-5 cursor-pointer py-4 rounded-full font-semibold text-xl md:text-xl md:px-4 md:py-3"
     (click)="handleSave()"><i class="fa-sharp fa-solid fa-floppy-disk"></i></p>
   </div>
 
   <!-- Question -->
-  <div class="px-8 md:px-10" *ngIf="questions">
+  <div class="px-8 md:px-4" *ngIf="questions">
     <p class="text-2xl text-darkblue font-bold tracking-wide leading-relaxed md:text-2xl md:font-semibold">{{questions[index].question}}</p>
   </div>
 
@@ -27,10 +29,34 @@
 
   <div class="flex flex-col space-y-4 px-8 justify-center pt-10 items-center md:flex-row md:space-x-4 md:space-y-0">
     <button class="btn" (click)= "handleDisplayAnswer()">Display Answer</button>
-    <button class="btn">Save Question</button>
+    <ng-container *ngIf="isSavedQuestions;else notSaveQuestion">
+      <button class="btn" (click)="removeSavedQuestions()">Remove All Questions</button>
+    </ng-container>
+
+    <ng-template #notSaveQuestion>
+      <button class="btn" (click)="saveQuestionToDb(questions[index].question, questions[index].answer)">Save Question</button>
+    </ng-template>
+
   </div>
 
   </ng-container>
-  <!-- Timer -->
+
+  <ng-template #congratsPage>
+   <div class="flex flex-col items-center justify-center space-y-10 pt-7 md:space-y-6">
+    <img class="h-72 w-64 md:w-72" src="../../../assets/section-complete.png">
+    <h1 class="text-2xl px-10 leading-snug text-center text-darkblue font-semibold uppercase">Yay!! Congrats on completing this section</h1>
+    <button class="btn mx-auto" routerLink="/section">Back to Section</button>
+  </div>
+  </ng-template>
+
 
 </div>
+</ng-container>
+
+<ng-template #noQuestions>
+  <div class="flex flex-col items-center justify-center space-y-14 pt-7 mt-32 md:mt-36 md:pt-5">
+    <img class="h-72 w-60 md:h-60" src="../../../assets/no-result-found.png">
+    <h1 class="text-2xl px-10 leading-snug text-center text-darkblue font-semibold uppercase">No questions available at the moment</h1>
+  </div>
+</ng-template>
+

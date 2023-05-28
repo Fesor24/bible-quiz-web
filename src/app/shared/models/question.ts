@@ -3,3 +3,8 @@ export interface IQuestion{
   question: string;
   answer: string;
 }
+
+export interface ISaveQuestion{
+  question: string;
+  answer: string;
+}

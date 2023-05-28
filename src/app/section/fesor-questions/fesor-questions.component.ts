@@ -21,14 +21,22 @@ export class FesorQuestionsComponent implements OnInit{
   }
 
   getFesorQuestions(){
-    this.sectionService.getFesorQuestions().subscribe((response) =>{
-      if(response?.successful){
-        this.fesorQuestions = response.result as IQuestion[]
-      }
-      else{
-        console.log(response?.errorMessage);
-      }
-    })
+
+    const token = localStorage.getItem('token');
+
+    if(token){
+       this.sectionService
+         .getFesorQuestions(token)
+         .subscribe((response) => {
+           if (response?.successful) {
+             this.fesorQuestions = response.result as IQuestion[];
+           } else {
+             console.log(response?.errorMessage);
+           }
+         });
+    }
+
+
   }
 
   getIndex(){

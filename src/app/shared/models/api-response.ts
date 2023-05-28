@@ -1,7 +1,7 @@
-export interface IApiResponse{
+export interface IApiResponse<TResult = any, TErrorResult = any, TWarningResult = any>{
   errorMessage: string;
   successful: boolean;
-  result: object;
-  warningResult: object;
-  errorResult: object;
+  result: TResult;
+  warningResult: TErrorResult;
+  errorResult: TWarningResult;
 }
