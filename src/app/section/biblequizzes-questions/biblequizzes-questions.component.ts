@@ -31,7 +31,7 @@ export class BiblequizzesQuestionsComponent implements OnInit {
            .subscribe((response) => {
              if (response?.successful) {
                this.thousandQuestions = response.result as IQuestion[];
-               console.log(response.result);
+               console.log("Data fetched");
              } else {
                console.log('error', response?.errorMessage);
              }

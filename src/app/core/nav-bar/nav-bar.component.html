@@ -17,7 +17,7 @@
       <a routerLink="/section" class=" uppercase font-medium cursor-pointer hover:text-darkblue"
       routerLinkActive="text-darkblue">Sections</a>
       <a routerLink="/verse" class="uppercase font-medium cursor-pointer hover:text-darkblue"
-      routerLinkActive="text-darkblue">Verse Of The Hour</a>
+      routerLinkActive="text-darkblue">Scripture Nuggets</a>
     </div>
 
     <!-- Button -->
@@ -49,7 +49,7 @@
     sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
     <a routerLink="/" (click) ="toggleMenu()">Home</a>
     <a routerLink="/section" (click) ="toggleMenu()">Sections</a>
-    <a routerLink="/verse" (click) ="toggleMenu()">Verse Of The Hour</a>
+    <a routerLink="/verse" (click) ="toggleMenu()">Scripture Nuggets</a>
     <ng-container *ngIf="(currentUser$ | async) as user;else nullUserMob">
       <a routerLink="/account/login" (click) ="logOut()">Logout</a>
     </ng-container>

@@ -1,0 +1,38 @@
+<ng-container *ngIf="bookName">
+<div class="w-full h-screen bg-slate-600 flex items-center justify-center transition ease-in-out">
+  <div class="px-12 py-10 pb-12 bg-white h-2/3 w-3/4 flex flex-col space-y-4 md:w-2/4 md:text-2xl">
+    <div class="flex flex-row items-center justify-between">
+      <h2 class="text-xl text-lightdarkblueSecondary font-semibold md:text-2xl">Scripture</h2>
+      <p class="font-extrabold text-lightdarkblueSecondary text-2xl cursor-pointer" (click)="closeModal()">X</p>
+    </div>
+
+    <!-- Border line -->
+      <div class="bg-darkblue h-1 w-full"></div>
+
+      <ng-container *ngIf="bookName.length > 0 && content.length > 0; else noContent">
+         <p class="leading-loose text-xl text-darkblue font-semibold">{{bookName}}</p>
+
+
+
+      <!-- Scripture -->
+        <div class="leading-loose text-lg overflow-y-auto px-8 pb-6" [innerHTML]="content"></div>
+      </ng-container>
+
+      <ng-template #noContent>
+        <p class="leading-loose text-xl text-darkblue font-semibold">No Scripture displayed</p>
+
+
+
+      <!-- Scripture -->
+        <p class="leading-loose text-lg overflow-y-auto px-8 pb-6">An error occurred while attempting to get the relevant scripture. Sorry about this.</p>
+      </ng-template>
+
+    <div>
+
+    </div>
+  </div>
+</div>
+
+</ng-container>
+
+

@@ -6,11 +6,12 @@ import { QuestionComponent } from './question/question.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextInputComponent } from './text-input/text-input.component';
+import { ScriptureComponent } from './scripture/scripture.component';
 
 
 
 @NgModule({
-  declarations: [CardComponent, InstructionsComponent, QuestionComponent, TextInputComponent],
+  declarations: [CardComponent, InstructionsComponent, QuestionComponent, TextInputComponent, ScriptureComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -21,7 +22,8 @@ import { TextInputComponent } from './text-input/text-input.component';
     InstructionsComponent,
     QuestionComponent,
     ReactiveFormsModule,
-    TextInputComponent
+    TextInputComponent,
+    ScriptureComponent,
   ],
 })
 export class SharedModule { }
