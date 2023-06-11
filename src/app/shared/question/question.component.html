@@ -18,12 +18,12 @@
 
   <!-- Question -->
   <div class="px-8 md:px-4" *ngIf="questions">
-    <p class="text-xl text-darkblue font-bold tracking-wide leading-relaxed md:text-2xl md:font-semibold">{{questions[index].question}}</p>
+    <p class="text-xl text-darkblue font-bold tracking-wide leading-relaxed md:text-2xl md:font-semibold md:text-center">{{questions[index].question}}</p>
   </div>
 
   <!-- Answer -->
   <div class="px-8 md:px-10" *ngIf="questions && showAnswer">
-    <p class="text-xl text-darkGrayishBlue font-medium">{{questions[index].answer}}</p>
+    <p class="text-xl text-darkGrayishBlue font-medium md:text-center">{{questions[index].answer}}</p>
   </div>
 
   <!-- Buttons -->
