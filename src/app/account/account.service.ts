@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { environment } from '../environments/environment';
 import { IApiResponse } from '../shared/models/api-response';
-import { ReplaySubject, map } from 'rxjs';
+import { ReplaySubject, catchError, map, of } from 'rxjs';
 import { IAccount } from '../shared/models/account';
 import { ToastrService } from 'ngx-toastr';
 
@@ -32,11 +32,13 @@ export class AccountService implements OnInit {
           localStorage.setItem('token', response.result.token)
           this.currentUserSource.next(response.result);
           this.toastr.success("Logged In");
-          console.log("logged in")
+          console.log("logged in");
+          return response.result;
         }
         else{
           console.log('error', response.errorMessage)
           this.toastr.error(response.errorMessage);
+          return null;
         }
       })
     )
@@ -66,7 +68,7 @@ export class AccountService implements OnInit {
 
     if(token === null){
       this.currentUserSource.next(null);
-      return;
+      return of();
     }
 
     let headers = new HttpHeaders();
@@ -79,6 +81,14 @@ export class AccountService implements OnInit {
           localStorage.setItem('token', response.result.token)
           this.currentUserSource.next(response.result);
         }
+        else{
+          this.currentUserSource.next(null);
+        }
+      },
+      ),
+      catchError((error) => {
+        this.currentUserSource.next(null);
+        return of();
       })
     )
   }
