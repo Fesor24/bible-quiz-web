@@ -7,10 +7,10 @@ import { Component, HostListener } from '@angular/core';
 })
 export class HomeComponent {
 
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(targetElement:HTMLElement) :void{
-    
-    console.log("clicked");
-  }
+  // @HostListener('document:click', ['$event'])
+  // onDocumentClick(targetElement:HTMLElement) :void{
+
+  //   console.log("clicked");
+  // }
 
 }
