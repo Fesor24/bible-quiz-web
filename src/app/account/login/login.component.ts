@@ -29,7 +29,10 @@ createLoginForm(){
 }
 
 onSubmit(){
-this.accountService.login(this.loginForm.value).subscribe(() =>{
+this.accountService.login(this.loginForm.value).subscribe((res) =>{
+  if(res === null){
+    return;
+  }
   this.router.navigateByUrl(this.redirectUrl);
 }, error => console.log(error))
 }
