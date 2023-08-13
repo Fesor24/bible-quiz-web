@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}"
-  ],
+  content: ["./src/**/*.{html,ts}"],
   theme: {
     screens: {
       sm: "480px",
@@ -11,7 +9,7 @@ module.exports = {
       xl: "1440px",
     },
     fontFamily: {
-      Poppins: ["Poppins", "sans-serif"],
+      Mulish: ["Mulish", "sans-serif"],
     },
     extend: {
       colors: {
