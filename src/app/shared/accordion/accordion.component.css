@@ -1,0 +1,55 @@
+
+.accordian {
+  max-width: 650px;
+  padding: 0.6rem;
+  border-bottom: 4px solid #DFE3E1;
+}
+
+.accordian_head {
+  background-color: transparent;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  cursor: pointer;
+}
+
+.accordian_toggler {
+  align-self: flex-start;
+  background-color: transparent;
+  font-size: 1.8rem;
+  transition: all 0.5s ease;
+}
+
+.accordian_toggler.active {
+  rotate: 133deg;
+}
+
+.accordian_title {
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.accordian_body {
+  background: transparent;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s ease;
+}
+
+.active_body {
+  grid-template-rows: 1fr;
+}
+
+.accordian_description {
+  background-color: rgb(197, 223, 245);
+  margin-top: 0.7rem;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  overflow: hidden;
+  line-height: 1.6rem;
+  border-radius: 10px;
+}
