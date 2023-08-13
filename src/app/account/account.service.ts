@@ -45,11 +45,22 @@ export class AccountService implements OnInit {
   }
 
   register(values:any){
-    return this.http.post<IApiResponse<IAccount, object, object>>(this.baseUrl + 'register', values).pipe(
+
+    const token = localStorage.getItem('token');
+
+    let headers = new HttpHeaders();
+
+    headers = headers.set('Authorization', `Bearer ${token}`);
+
+    console.log(headers);
+
+    return this.http.post<IApiResponse<IAccount, object, object>>(this.baseUrl + 'register', values, {headers})
+    .pipe(
       map((response: IApiResponse<IAccount, object, object>) => {
         if(response.successful){
-          localStorage.setItem('token', response.result.token);
-          this.currentUserSource.next(response.result);
+          this.toastr.success("User created");
+          // localStorage.setItem('token', response.result.token);
+          // this.currentUserSource.next(response.result);
         }
         else{
           console.log(response.errorMessage);
