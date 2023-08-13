@@ -38,6 +38,8 @@ export class QuestionComponent implements OnInit, OnDestroy, DoCheck {
 
   oldArrayLength = 0;
 
+  resetValue = 0;
+
   showCongratsPage = false;
 
   @Input() questions: IQuestion[] = [];
@@ -74,8 +76,10 @@ export class QuestionComponent implements OnInit, OnDestroy, DoCheck {
     this.showAnswer = false;
     if ((this.questions && this.questions.length - 1) == this.index) {
       this.showCongratsPage = true;
+      this.resetProgress();
     } else {
       this.index++;
+      this.saveProgressInLocalStorage();
       this.timer = this.constTimerValue;
       this.startTimer();
     }
@@ -93,20 +97,41 @@ export class QuestionComponent implements OnInit, OnDestroy, DoCheck {
     }
   }
 
-  handleSave() {
-    if (this.isFesorQuestion) {
-      localStorage.setItem('section_b_index', this.index.toString());
-    }
+  resetProgress(){
 
-    if (this.isSavedQuestions) {
-      localStorage.setItem('saved_index', this.index.toString());
-    }
+    this.index = 0;
 
-    if (this.isThousandQuestion) {
-      localStorage.setItem('section_a_index', this.index.toString());
-    }
+     if (this.isFesorQuestion) {
+       localStorage.setItem('section_b_index', this.resetValue.toString());
+     }
 
-    this.toastr.success('Session saved');
+     if (this.isSavedQuestions) {
+       localStorage.setItem('saved_index', this.resetValue.toString());
+     }
+
+     if (this.isThousandQuestion) {
+       localStorage.setItem('section_a_index', this.resetValue.toString());
+     }
+  }
+
+  saveProgressInLocalStorage(){
+      if (this.isFesorQuestion) {
+        localStorage.setItem('section_b_index', this.index.toString());
+      }
+
+      if (this.isSavedQuestions) {
+        localStorage.setItem('saved_index', this.index.toString());
+      }
+
+      if (this.isThousandQuestion) {
+        localStorage.setItem('section_a_index', this.index.toString());
+      }
+  }
+
+  handleReset() {
+    this.resetProgress();
+
+    this.toastr.success('Progress reset');
   }
 
   handleDisplayAnswer() {
