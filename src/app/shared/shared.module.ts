@@ -7,11 +7,12 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextInputComponent } from './text-input/text-input.component';
 import { ScriptureComponent } from './scripture/scripture.component';
+import { AccordionComponent } from './accordion/accordion.component';
 
 
 
 @NgModule({
-  declarations: [CardComponent, InstructionsComponent, QuestionComponent, TextInputComponent, ScriptureComponent],
+  declarations: [CardComponent, InstructionsComponent, QuestionComponent, TextInputComponent, ScriptureComponent, AccordionComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -24,6 +25,7 @@ import { ScriptureComponent } from './scripture/scripture.component';
     ReactiveFormsModule,
     TextInputComponent,
     ScriptureComponent,
+    AccordionComponent
   ],
 })
 export class SharedModule { }
