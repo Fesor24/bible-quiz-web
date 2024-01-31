@@ -3,11 +3,12 @@
 <!-- Hero Section -->
 <section id="hero" class="mt-32">
   <!-- Flex Container -->
-  <div class="container flex flex-col-reverse items-center px-6 mx-auto space-y-0 md:space-y-0 md:flex-row">
+  <div class="container flex flex-col-reverse items-center px-6 mx-auto space-y-0
+  md:space-y-0 md:flex-row">
     <!-- Left Item -->
     <div class="flex flex-col mb-32 space-y-12 md:w-1/2">
       <h1 class="max-w-md text-3xl font-bold text-center md:text-4xl md:text-left lg:text-5xl sm:text-xl leading-snug text-darkblue">
-        Compilation of Questions to Enhance Quiz Preparation
+        Bible Reading and Compilation of Questions to Enhance Quiz Preparation
       </h1>
       <p class="max-w-sm text-center text-darkGrayishBlue md:text-left">
         Enhance your Bible quiz readiness and elevate your competition performance with a comprehensive array of resources designed to aid in your preparation.
@@ -45,36 +46,12 @@
 </section>
 
 
-<!-- Instructions -->
-<!-- <section id="instructions">
-  <div class="container flex flex-col px-4 pb-16 pt-6 mx-auto mt-10 space-y-12 md:space-y-0 md:flex-row">
-
-    <div class="flex flex-col space-y-12 md:w-1/2">
-      <h2 class="max-w-md text-4xl font-bold text-center md:text-left">About</h2>
-      <p class="max-w-sm text-center text-darkGrayishBlue md:text-left md:w-9/12">
-        Read the following to have a fair idea on how this application works
-      </p>
-    </div>
-
-
-    <div class="flex flex-col space-y-8 px-6 md:w-1/2 md:space-y-7 md:px-0">
-
-      <app-instructions [messageNumber] = "'1'" [messageTitle] = "'Question Type'" [messageDescription] = "'Options are not provided for any question. Click on the \'Display Answer\' button to view the answer to the respective question.'"></app-instructions>
-
-      <app-instructions [messageNumber] = "'2'" [messageTitle] = "'Saved Progress'" [messageDescription] = "'To save your progress and resume from where you left off, click on the button with the save icon (diskette)'"></app-instructions>
-
-      <app-instructions [messageNumber] = "'3'" [messageTitle] = "'Saved Section'" [messageDescription] = "'You can save questions you would like to revisit, click on the \'Save Question\' button in any question and it will be saved.'"></app-instructions>
-
-    </div>
-  </div>
-</section> -->
-
 <section id="about">
   <div class="container py-16 mx-auto">
     <h3 class="text-center text-4xl text-darkblue font-semibold">About</h3>
     <div class="flex flex-col justify-center items-center md:max-w-lg md:mx-auto">
       <app-accordion [title]="'Relevance of this application?'" [description]="'Streamlined Bible quiz application designed to support GTCC members in their preparation for upcoming quiz competitions.'"></app-accordion>
-      <app-accordion [title]="'What is the significance of the different sections?'" [description]="'Section A comprises questions sourced from biblequizzes.org.uk. Section B includes questions derived from previous Church Services (Mid-week & Sunday) and personal studies. Section C is dedicated to questions you\'ve saved for potential future review'"></app-accordion>
+      <app-accordion [title]="'What is the significance of the different sections?'" [description]="'Section A comprises questions sourced from biblequizzes.org.uk. Section B comprises questions set by the author. Section C is dedicated to questions you\'ve saved for potential future review'"></app-accordion>
       <app-accordion [title]="'Is my progress preserved?'" [description]="'Your progress is automatically saved, allowing you to seamlessly resume from where you left off. If you wish to begin from the initial question, simply click the button featuring the cancel icon.'"></app-accordion>
       <app-accordion [title]="'I can\'t register. What\'s the reason for this?'" [description]="'I apologize for the inconvenience. This platform is exclusively designed for GTCC members.'"></app-accordion>
     </div>
