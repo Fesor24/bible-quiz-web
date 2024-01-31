@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SectionComponent } from './section.component';
-import { FesorQuestionsComponent } from './fesor-questions/fesor-questions.component';
+import { AuthorQuestionsComponent } from './author-questions/author-questions.component';
 import { BiblequizzesQuestionsComponent } from './biblequizzes-questions/biblequizzes-questions.component';
 import { RevisionQuestionsComponent } from './revision-questions/revision-questions.component';
 import { authGuard } from '../core/guards/auth.guard';
 
-
 const routes: Routes = [
   { path: '', component: SectionComponent },
   {
-    path: 'fesor',
-    canActivate: [authGuard],
-    component: FesorQuestionsComponent,
+    path: 'author',
+    // canActivate: [authGuard],
+    component: AuthorQuestionsComponent,
   },
   {
     path: 'biblequizzes',
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     component: BiblequizzesQuestionsComponent,
   },
   { path: 'saved', component: RevisionQuestionsComponent },
@@ -24,6 +23,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SectionRoutingModule { }
+export class SectionRoutingModule {}
