@@ -2,6 +2,12 @@ import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { SectionService } from '../section.service';
 import { IQuestion } from 'src/app/shared/models/question';
 import { ToastrService } from 'ngx-toastr';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { bibleQuizzesQuestionSelector } from 'src/app/store/questions/questions.selectors';
+import { IQuestionStore } from 'src/app/store/questions/questions.reducer';
+import { loadQuestions } from 'src/app/store/questions/questions.actions';
+import { QuestionSource } from 'src/app/shared/enums/question-source.enum';
 
 @Component({
   selector: 'app-biblequizzes-questions',
@@ -9,35 +15,19 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./biblequizzes-questions.component.css'],
 })
 export class BiblequizzesQuestionsComponent implements OnInit {
-  thousandQuestions!: IQuestion[];
+  questions$!: Observable<IQuestion[]>;
 
   index = 0;
 
   constructor(
-    private sectionService: SectionService
-  ) {}
-
-  ngOnInit(): void {
-    this.getThousandQuestions();
-    this.getIndex();
+    private store: Store<{question: IQuestionStore}>
+  ) {
+    this.questions$ = this.store.select(bibleQuizzesQuestionSelector);
   }
 
-  getThousandQuestions() {
-    const token = localStorage.getItem('token');
-
-    if(token){
-         this.sectionService
-           .getThousandQuestions(token)
-           .subscribe((response) => {
-             if (response?.successful) {
-               this.thousandQuestions = response.result as IQuestion[];
-               console.log("Data fetched");
-             } else {
-               console.log('error', response?.errorMessage);
-             }
-           });
-    }
-
+  ngOnInit(): void {
+    this.store.dispatch(loadQuestions({source: QuestionSource.BibleQuizzes}));
+    this.getIndex();
   }
 
   getIndex() {
