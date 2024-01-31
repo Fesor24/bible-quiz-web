@@ -1,0 +1,5 @@
+<div *ngIf="(questions$ | async) as questions">
+  <app-question [questions]="questions" [isFesorQuestion]="true" [index]="index"></app-question>
+</div>
+
+
