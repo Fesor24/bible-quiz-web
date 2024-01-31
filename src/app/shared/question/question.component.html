@@ -23,7 +23,17 @@
 
   <!-- Answer -->
   <div class="px-8 md:px-10" *ngIf="questions && showAnswer">
-    <p class="text-xl text-darkGrayishBlue font-medium md:text-center">{{questions[index].answer}}</p>
+    <div class="shadow-lg rounded-md bg-green-600">
+      <p class="text-xl text-white font-bold md:text-center px-3 py-2 md:px-0">Answer - {{questions[index].answer}}</p>
+    </div>
+
+    <div class="rounded-md shadow-xl bg-slate-400 mt-3 font-bold">
+      <p class="text-xl text-white text-center pt-3">
+         Scripture: {{questions[index].verse}}
+      </p>
+      <div class="text-white text-center pb-2 px-3" [innerHTML]="questions[index].passage"></div>
+    </div>
+
   </div>
 
   <!-- Buttons -->
@@ -38,7 +48,11 @@
       <button class="btn" (click)="saveQuestionToDb(questions[index].question, questions[index].answer)">Save Question</button>
     </ng-template>
 
-    <button class="btn" (click)= "showModal()">View Scripture</button>
+    <!-- <button class="btn" (click)= "showModal()">View Scripture</button> -->
+    <ng-container *ngIf="!questions[index].passage || questions[index].passage.length < 1">
+      <button class="btn" (click)="getQuestionScripture(questions[index].id, questions[index].source)">View Scripture</button>
+    </ng-container>
+
 
   </div>
 
