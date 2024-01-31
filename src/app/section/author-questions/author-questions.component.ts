@@ -11,7 +11,7 @@ import { QuestionSource } from 'src/app/shared/enums/question-source.enum';
 @Component({
   selector: 'app-author-questions',
   templateUrl: './author-questions.component.html',
-  styleUrls: ['./author-questions.component.css']
+  styles: []
 })
 export class AuthorQuestionsComponent implements OnInit{
 
