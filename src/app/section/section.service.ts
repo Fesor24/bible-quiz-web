@@ -2,46 +2,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { IApiResponse } from '../shared/models/api-response';
 import { map } from 'rxjs';
-import { IQuestion, ISaveQuestion } from '../shared/models/question';
+import { IQuestion, IQuestionScripture, ISaveQuestion } from '../shared/models/question';
 import { environment } from '../environments/environment';
+import { QuestionSource } from '../shared/enums/question-source.enum';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SectionService implements OnInit {
+export class SectionService {
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
-  getThousandQuestions(token: string) {
-
-    let headers = new HttpHeaders();
-
-    headers = headers.set('Authorization', `Bearer ${token}`)
-
-    return this.http.get<IApiResponse>(this.baseUrl + "thousand-questions/fetch", {observe: 'response', headers})
-    .pipe(
-      map(response=>
-          response.body
-    ))
-  }
-
-  getFesorQuestions(token: string){
-
-    let headers = new HttpHeaders();
-
-    headers = headers.set('Authorization', `Bearer ${token}`)
-
-    return this.http.get<IApiResponse>(this.baseUrl + "fesor-questions/fetch", {observe: 'response', headers})
-    .pipe(
-      map(response =>
-        response.body)
-    )
-  }
 
   getSavedQuestions(token: string){
 
@@ -81,5 +52,13 @@ export class SectionService implements OnInit {
         return response;
       })
     )
+  }
+
+  getQuestions(source: QuestionSource){
+    return this.http.get<IQuestion[]>(this.baseUrl + `questions?source=${source}`);
+  }
+
+  getQuestionPassage(questionId: number){
+    return this.http.get<IQuestionScripture>(this.baseUrl + `question/passage/${questionId}`);
   }
 }
