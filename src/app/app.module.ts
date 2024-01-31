@@ -11,6 +11,10 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
+import { StoreModule } from '@ngrx/store';
+import { questionReducer } from './store/questions/questions.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { QuestionEffects } from './store/questions/questions.effect';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,13 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
     SharedModule,
     HomeModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({
+      question: questionReducer
+    }),
+    EffectsModule.forRoot([
+      QuestionEffects
+    ])
   ],
   providers: [
 
