@@ -15,7 +15,9 @@
       <a routerLink="/" class="uppercase font-medium cursor-pointer hover:text-darkblue"
       routerLinkActive="text-darkblue" [routerLinkActiveOptions]="{exact:true}">Home</a>
       <a routerLink="/section" class=" uppercase font-medium cursor-pointer hover:text-darkblue"
-      routerLinkActive="text-darkblue">Sections</a>
+      routerLinkActive="text-darkblue">Quiz</a>
+      <a routerLink="/section" class=" uppercase font-medium cursor-pointer hover:text-darkblue"
+        routerLinkActive="text-darkblue">Bible Reading</a>
       <a routerLink="/verse" class="uppercase font-medium cursor-pointer hover:text-darkblue"
       routerLinkActive="text-darkblue">Scripture Nuggets</a>
     </div>
@@ -46,9 +48,10 @@
   <!-- Mobile Menu -->
   <div class="md:hidden" *ngIf="isVisible">
     <div class="absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white
-    sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
+    sm:w-auto sm:self-center left-6 right-6 drop-shadow-md" (click)="toggleMenu()">
     <a routerLink="/" (click) ="toggleMenu()">Home</a>
-    <a routerLink="/section" (click) ="toggleMenu()">Sections</a>
+    <a routerLink="/section" (click) ="toggleMenu()">Quiz</a>
+    <a routerLink="/section" (click)="toggleMenu()">Bible Reading</a>
     <a routerLink="/verse" (click) ="toggleMenu()">Scripture Nuggets</a>
     <ng-container *ngIf="(currentUser$ | async) as user;else nullUserMob">
       <a routerLink="/account/login" (click) ="logOut()">Logout</a>
