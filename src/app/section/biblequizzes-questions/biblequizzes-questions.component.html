@@ -1,1 +1,3 @@
-<app-question [questions]="thousandQuestions" [isThousandQuestion]="true" [index]="index"></app-question>
+<div *ngIf="(questions$ | async) as questions">
+<app-question [questions]="questions" [isThousandQuestion]="true" [index]="index"></app-question>
+</div>
