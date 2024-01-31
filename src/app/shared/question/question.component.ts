@@ -4,6 +4,9 @@ import { ToastrService } from 'ngx-toastr';
 import { SectionService } from 'src/app/section/section.service';
 import { SharedService } from '../shared.service';
 import { IScriptureSearch } from '../models/bible-scripture-search';
+import { Store } from '@ngrx/store';
+import { getQuestionScripture } from 'src/app/store/questions/questions.actions';
+import { AUTHOR_SOURCE, BIBLEQUIZZES_SOURCE, QuestionSource } from '../enums/question-source.enum';
 
 @Component({
   selector: 'app-question',
@@ -15,7 +18,8 @@ export class QuestionComponent implements OnInit, OnDestroy, DoCheck {
     private toastr: ToastrService,
     private sectionService: SectionService,
     private changeRef: ChangeDetectorRef,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private store: Store
   ) {}
 
   constTimerValue = 30;
@@ -229,5 +233,20 @@ export class QuestionComponent implements OnInit, OnDestroy, DoCheck {
     } else {
       this.isAvailable = false;
     }
+  }
+
+  getQuestionScripture(questionId: number, source: string){
+    let questionSource = QuestionSource.Author;
+
+    if(source === BIBLEQUIZZES_SOURCE){
+      questionSource = QuestionSource.BibleQuizzes;
+    }
+    else if(source === AUTHOR_SOURCE){
+      questionSource = QuestionSource.Author
+    }else{
+      return;
+    }
+
+    this.store.dispatch(getQuestionScripture({questionId: questionId, source: questionSource}))
   }
 }
