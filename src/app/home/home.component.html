@@ -1,122 +1,130 @@
-
 <ng-container #myContainer>
-<!-- Hero Section -->
-<section id="hero" class="mt-32">
-  <!-- Flex Container -->
-  <div class="container flex flex-col-reverse items-center px-6 mx-auto space-y-0
+  <!-- Hero Section -->
+  <section id="hero" class="mt-32">
+    <!-- Flex Container -->
+    <div class="container flex flex-col-reverse items-center px-6 mx-auto space-y-0
   md:space-y-0 md:flex-row">
-    <!-- Left Item -->
-    <div class="flex flex-col mb-32 space-y-12 md:w-1/2">
-      <h1 class="max-w-md text-3xl font-bold text-center md:text-4xl md:text-left lg:text-5xl sm:text-xl leading-snug text-darkblue">
-        Bible Reading and Compilation of Questions to Enhance Quiz Preparation
-      </h1>
-      <p class="max-w-sm text-center text-darkGrayishBlue md:text-left">
-        Enhance your Bible quiz readiness and elevate your competition performance with a comprehensive array of resources designed to aid in your preparation.
-      </p>
-      <div class="flex justify-center md:justify-start">
-        <a class="btn" routerLink="/section">Get Started</a>
+      <!-- Left Item -->
+      <div class="flex flex-col mb-32 space-y-12 md:w-1/2">
+        <h1
+          class="max-w-md text-3xl font-bold text-center md:text-4xl md:text-left lg:text-5xl sm:text-xl leading-snug text-darkblue">
+          Compilation of Questions to Aid Quiz Preparation
+        </h1>
+        <p class="max-w-sm text-center text-darkGrayishBlue md:text-left">
+          Enhance your Bible quiz readiness and elevate your competition performance with a comprehensive array of
+          resources designed to aid in your preparation.
+        </p>
+        <div class="flex justify-center md:justify-start">
+          <a class="btn" routerLink="/section">Get Started</a>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="md:w-1/2 animate">
+        <img src="../assets/quiz.webp" class="h-56 md:h-full" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="bg-gray-200 pt-12 pb-24">
+    <div class="container flex flex-col px-4 mx-auto space-y-12 md:space-y-0 ">
+      <h1 class="text-darkblue font-semibold mt-8 text-center text-3xl uppercase md:mb-10 md:text-4xl">Sections</h1>
+      <!-- Card -->
+      <div class="grid grid-cols-1 place-items-center
+    md:grid-cols-2 md:space-y-0 gap-10 lg:grid-cols-3 lg:space-x-14 lg:space-y-0">
+
+        <!-- Single Card -->
+        <app-card [title]="'Theory A'"
+          [description]="'Questions in this section were sourced from biblequizzes.org.uk '"
+          [link]="'/section/biblequizzes'"></app-card>
+        <app-card [title]="'Theory B'" [description]="'The author has contributed to questions in this section'"
+          [link]="'/section/fesor'"></app-card>
+        <app-card [title]="'Objectives'" [description]="'The author has contributed to questions in this section'"
+          [link]="'/section/objectives'"></app-card>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="about">
+    <div class="container py-16 mx-auto">
+      <h3 class="text-center text-4xl text-darkblue font-semibold">About</h3>
+      <div class="flex flex-col justify-center items-center md:max-w-lg md:mx-auto">
+        <app-accordion [title]="'Relevance of this application?'"
+          [description]="'Streamlined Bible quiz application designed to support GTCC members in their preparation for upcoming Bible quiz competitions.'"></app-accordion>
+        <app-accordion [title]="'What is the significance of the different sections?'"
+          [description]="'Theory A comprises questions sourced from biblequizzes.org.uk. Theiry B comprises questions set by the author, same with Objectives'"></app-accordion>
+        <app-accordion [title]="'Is my progress preserved?'"
+          [description]="'Your progress is automatically saved, allowing you to seamlessly resume from where you left off. If you wish to begin from the initial question, simply click the button featuring the cancel icon.'"></app-accordion>
+        <app-accordion [title]="'I can\'t register. What\'s the reason for this?'"
+          [description]="'I apologize for the inconvenience. This platform is exclusively designed for GTCC members.'"></app-accordion>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- cta -->
+  <section id="cta" class="bg-darkblue">
+    <div class="container flex flex-col items-center justify-between px-6 py-24 mx-auto space-y-12
+  md:py-24 md:flex-row md:space-y-0">
+      <h2 class="text-3xl font-bold leading-tight text-center text-white md:text-4xl ms:max-w-xl md:text-left anime">
+        Best of Luck
+      </h2>
+
+      <div>
+        <p routerLink="/section" class="btn-sec">Get started</p>
       </div>
     </div>
 
-    <!-- Image -->
-    <div class="md:w-1/2 animate">
-      <img src="../assets/quiz.webp" class="h-56 md:h-full" alt="">
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Features -->
-<section id="features" class="bg-gray-200 pt-12 pb-24">
-  <div class="container flex flex-col px-4 mx-auto space-y-12 md:space-y-0 ">
-    <h1 class="text-darkblue font-semibold mt-8 text-center text-3xl uppercase md:mb-10 md:text-4xl"
-    >Sections</h1>
-    <!-- Card -->
-    <div class="grid grid-cols-1 place-items-center
-    md:grid-cols-2 md:space-y-0 gap-10 lg:grid-cols-3 lg:space-x-14 lg:space-y-0">
-
-      <!-- Single Card -->
-      <app-card [title]="'Section A'" [description]="'Questions in this section were sourced from biblequizzes.org.uk '"
-      [link]="'/section/biblequizzes'"></app-card>
-      <app-card [title]="'Section B'" [description]="'The author has contributed to questions in this section'"
-      [link]="'/section/fesor'"></app-card>
-      <app-card [title]="'Section C'" [description]="'Saved questions can be accessed at any time in this section'"
-      [link]="'/section/saved'"></app-card>
-    </div>
-  </div>
-</section>
-
-
-<section id="about">
-  <div class="container py-16 mx-auto">
-    <h3 class="text-center text-4xl text-darkblue font-semibold">About</h3>
-    <div class="flex flex-col justify-center items-center md:max-w-lg md:mx-auto">
-      <app-accordion [title]="'Relevance of this application?'" [description]="'Streamlined Bible quiz application designed to support GTCC members in their preparation for upcoming quiz competitions.'"></app-accordion>
-      <app-accordion [title]="'What is the significance of the different sections?'" [description]="'Section A comprises questions sourced from biblequizzes.org.uk. Section B comprises questions set by the author. Section C is dedicated to questions you\'ve saved for potential future review'"></app-accordion>
-      <app-accordion [title]="'Is my progress preserved?'" [description]="'Your progress is automatically saved, allowing you to seamlessly resume from where you left off. If you wish to begin from the initial question, simply click the button featuring the cancel icon.'"></app-accordion>
-      <app-accordion [title]="'I can\'t register. What\'s the reason for this?'" [description]="'I apologize for the inconvenience. This platform is exclusively designed for GTCC members.'"></app-accordion>
-    </div>
-  </div>
-</section>
-
-
-<!-- cta -->
-<section id="cta" class="bg-darkblue">
-  <div class="container flex flex-col items-center justify-between px-6 py-24 mx-auto space-y-12
-  md:py-24 md:flex-row md:space-y-0">
-  <h2 class="text-3xl font-bold leading-tight text-center text-white md:text-4xl ms:max-w-xl md:text-left anime">
-    Best of Luck
-  </h2>
-
-  <div>
-    <p routerLink="/section" class="btn-sec">Get started</p>
-  </div>
-  </div>
-
-</section>
-
-<!-- Worship with us -->
-<section id="worship">
-  <div class="container flex flex-col items-center justify-between px-6 py-12 mx-auto space-y-8
+  <!-- Worship with us -->
+  <section id="worship">
+    <div class="container flex flex-col items-center justify-between px-6 py-12 mx-auto space-y-8
   md:py-12 md:flex-row md:space-y-0">
-  <h2 class="text-3xl font-bold leading-tight text-center text-darkblue md:text-4xl ms:max-w-xl md:text-left">
-    Worship with us
-  </h2>
+      <h2 class="text-3xl font-bold leading-tight text-center text-darkblue md:text-4xl ms:max-w-xl md:text-left">
+        Worship with us
+      </h2>
 
-  <div class="flex flex-col space-y-4">
-    <div class="text-sm font-semibold text-darkGrayishBlue md:text-2xl">
-      <p class="leading-tight">Every Sunday at 9:00am</p>
-      <p class="leading-tight">Every Wednesday at 6:00pm</p>
-    </div>
+      <div class="flex flex-col space-y-4">
+        <div class="text-sm font-semibold text-darkGrayishBlue md:text-2xl">
+          <p class="leading-tight">Every Sunday at 9:00am</p>
+          <p class="leading-tight">Every Wednesday at 6:00pm</p>
+        </div>
 
-    <div class="text-sm font-semibold text-darkGrayishBlue">
-        <p class="leading-tight">Grace and Truth Christain Center</p>
-      <p class="leading-tight">7 Tunde Abimbola Street, Magodo Phase 2,</p>
-      <p class="leading-tight">Off Tokunbo Macaulay Street, </p>
-      <p class="leading-tight">Shangisha, Ketu Lagos, Nigeria</p>
-    </div>
+        <div class="text-sm font-semibold text-darkGrayishBlue">
+          <p class="leading-tight">Grace and Truth Christain Center</p>
+          <p class="leading-tight">7 Tunde Abimbola Street, Magodo Phase 2,</p>
+          <p class="leading-tight">Off Tokunbo Macaulay Street, </p>
+          <p class="leading-tight">Shangisha, Ketu Lagos, Nigeria</p>
+        </div>
 
 
 
-       <a class="text-darkblue font-bold tracking-wide flex cursor-pointer" href="https://graceandtruthng.org/" target="_blank">
+        <a class="text-darkblue font-bold tracking-wide flex cursor-pointer" href="https://graceandtruthng.org/"
+          target="_blank">
           <span>More information</span>
           <span>
-                 <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-</svg>
+            <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
           </span>
 
 
         </a>
-  </div>
-  </div>
+      </div>
+    </div>
 
-</section>
+  </section>
 
-<!-- Footer -->
-<section id="footer" class="bg-black">
-  <p class="text-white text-center px-3 py-4">Developed by <a href="mailto:onafesowale@gmail.com" class="text-lightdarkblue">Wale</a>
-</p>
-</section>
+  <!-- Footer -->
+  <section id="footer" class="bg-black">
+    <p class="text-white text-center px-3 py-4">Developed by <a href="mailto:onafesowale@gmail.com"
+        class="text-lightdarkblue">Wale</a>
+    </p>
+  </section>
 
 
 </ng-container>
