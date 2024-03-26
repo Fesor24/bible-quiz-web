@@ -30,25 +30,6 @@ export class AuthorQuestionsComponent implements OnInit{
     this.store.dispatch(loadQuestions({source: QuestionSource.Author}));
   }
 
-  // getFesorQuestions(){
-
-  //   const token = localStorage.getItem('token');
-
-  //   if(token){
-  //      this.sectionService
-  //        .getFesorQuestions(token)
-  //        .subscribe((response) => {
-  //          if (response?.successful) {
-  //            this.fesorQuestions = response.result as IQuestion[];
-  //          } else {
-  //            console.log(response?.errorMessage);
-  //          }
-  //        });
-  //   }
-
-
-  // }
-
   getIndex(){
     const index = localStorage.getItem('section_b_index');
 
