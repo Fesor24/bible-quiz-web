@@ -1,5 +1,5 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { getQuestionScripture, loadQuestions, loadQuestionsSuccess, updateQuestionScripture } from "./questions.actions";
+import { getQuestionScripture, loadObjectives, loadObjectivesSuccess, loadQuestions, loadQuestionsSuccess, updateQuestionScripture } from "./questions.actions";
 import { EMPTY, catchError, exhaustMap, map, of, tap, withLatestFrom } from "rxjs";
 import { Injectable } from "@angular/core";
 import { SectionService } from "src/app/section/section.service";
@@ -19,6 +19,21 @@ export class QuestionEffects {
           tap(() => console.log(state)),
           map((questions) =>
             loadQuestionsSuccess({ data: questions, source: action.source })
+          ),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
+  loadObjectives$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(loadObjectives),
+      withLatestFrom(this.store.select(questionsSelector)),
+      exhaustMap(([action, state]) =>
+        this.sectionService.getObjectiveQuestions().pipe(
+          map((questions) =>
+            loadObjectivesSuccess({data: questions})
           ),
           catchError(() => EMPTY)
         )
