@@ -7,6 +7,7 @@ import { RevisionQuestionsComponent } from './revision-questions/revision-questi
 import { BiblequizzesQuestionsComponent } from './biblequizzes-questions/biblequizzes-questions.component';
 import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
+import { ObjectiveQuestionsComponent } from './objective-questions/objective-questions.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
     AuthorQuestionsComponent,
     RevisionQuestionsComponent,
     BiblequizzesQuestionsComponent,
+    ObjectiveQuestionsComponent,
   ],
   imports: [CommonModule, SectionRoutingModule, CoreModule, SharedModule],
 })
