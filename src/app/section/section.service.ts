@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { IQuestion, IQuestionScripture, ISaveQuestion } from '../shared/models/question';
 import { environment } from '../environments/environment';
 import { QuestionSource } from '../shared/enums/question-source.enum';
+import { IObjective } from '../shared/models/objective';
 
 @Injectable({
   providedIn: 'root',
@@ -55,10 +56,14 @@ export class SectionService {
   }
 
   getQuestions(source: QuestionSource){
-    return this.http.get<IQuestion[]>(this.baseUrl + `questions?source=${source}`);
+    return this.http.get<IQuestion[]>(this.baseUrl + `questions/theory?source=${source}`);
   }
 
   getQuestionPassage(questionId: number){
-    return this.http.get<IQuestionScripture>(this.baseUrl + `question/passage/${questionId}`);
+    return this.http.get<IQuestionScripture>(this.baseUrl + `question/theory/passage/${questionId}`);
+  }
+
+  getObjectiveQuestions(){
+    return this.http.get<IObjective[]>(this.baseUrl + `question/objectives`);
   }
 }
