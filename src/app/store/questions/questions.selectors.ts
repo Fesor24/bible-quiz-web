@@ -5,3 +5,5 @@ export const bibleQuizzesQuestionSelector = (state: {question: IQuestionStore}) 
 export const authorQuestionSelector = (state: {question: IQuestionStore}) => state.question.author;
 
 export const questionsSelector = (state: {question: IQuestionStore}) => state.question;
+
+export const objectivesSelector = (state: {question: IQuestionStore}) => state.question.objectives;
