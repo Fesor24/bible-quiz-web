@@ -1,0 +1,85 @@
+<ng-container *ngIf="questions && questions.length > 0;else noQuestions">
+  <div class="container mx-auto flex flex-col space-y-6 pb-20 mt-10 md:mt-24">
+    <ng-container *ngIf="questions && !showCongratsPage;else congratsPage">
+      <div>
+        <p class="text-center text-darkblue text-2xl font-extrabold md:text-3xl"
+          [ngClass]="{'text-red-600':timer < 10}">00:{{setTimerValue(timer)}}</p>
+      </div>
+      <!-- Buttons -->
+      <div class="flex items-center justify-center space-x-6">
+        <p class="bg-darkblue text-white px-4 py-3 cursor-pointer focus:outline-none rounded-full font-semibold text-sm md:text-xl md:px-4 md:py-3"
+          (click)="handleNext()"><i class="fa-solid fa-arrow-right"></i></p>
+        <p class="bg-darkblue text-white cursor-pointer px-4 py-3 focus:outline-none rounded-full font-semibold text-sm md:text-xl md:px-4 md:py-3"
+          (click)="handlePrevious()"><i class="fa-solid fa-arrow-left"></i></p>
+        <p class="bg-darkblue text-white px-4 cursor-pointer py-3 focus:outline-none rounded-full font-semibold text-sm md:text-xl md:px-4 md:py-3"
+          (click)="handleReset()"><i class="fa-solid fa-ban"></i></p>
+      </div>
+
+      <!-- Question -->
+      <div class="px-8 md:px-4">
+        <p
+          class="text-xl text-darkblue font-bold tracking-wide leading-relaxed md:text-2xl md:font-semibold md:text-center">
+          {{questions[index].question}}</p>
+      </div>
+
+      <!-- Options -->
+      <div class="flex flex-col space-y-2 items-center justify-center">
+        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer"
+          (click)="setSelectedOption('A')" [ngClass]="{'bg-orange-400 text-white': selectedOption === 'A'}"
+          [ngClass]="{'bg-green-700 text-white': answer === 'A'}">
+          A. {{questions[index].optionA}}
+        </div>
+        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer"
+          (click)="setSelectedOption('B')" [ngClass]="{'bg-orange-400 text-white': selectedOption === 'B'}"
+          [ngClass]="{'bg-green-700 text-white': answer === 'B'}">
+          B. {{questions[index].optionB}}
+        </div>
+        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer"
+          (click)="setSelectedOption('C')" [ngClass]="{'bg-orange-400 text-white': selectedOption === 'C'}"
+          [ngClass]="{'bg-green-700 text-white': answer === 'C'}">
+          C. {{questions[index].optionC}}
+        </div>
+        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer"
+          (click)="setSelectedOption('D')" [ngClass]="{'bg-orange-400 text-white': selectedOption === 'D'}"
+          [ngClass]="{'bg-green-700 text-white': answer === 'D'}">
+          D. {{questions[index].optionD}}
+        </div>
+      </div>
+
+      <div class="flex space-y-2 items-center justify-center">
+        <button class="btn" (click)="checkAnswer()">Check Answer</button>
+      </div>
+
+      <!-- Answer -->
+      <!-- <div class="px-8 md:px-10" *ngIf="questions && showAnswer">
+        <div class="shadow-lg rounded-md bg-green-600">
+          <p class="text-xl text-white font-bold md:text-center px-3 py-2 md:px-0">Answer -
+            {{questions[index].answer}}</p>
+        </div>
+
+
+
+      </div> -->
+
+    </ng-container>
+
+    <ng-template #congratsPage>
+      <div class="flex flex-col items-center justify-center space-y-10 pt-7 md:space-y-6">
+        <img class="h-72 w-64 md:w-72" src="../../../assets/section-complete.png">
+        <h1 class="text-2xl px-10 leading-snug text-center text-darkblue font-semibold uppercase">Yay!! Congrats on
+          completing this section</h1>
+        <button class="btn mx-auto" routerLink="/section">Back to Section</button>
+      </div>
+    </ng-template>
+
+
+  </div>
+</ng-container>
+
+<ng-template #noQuestions>
+  <div class="flex flex-col items-center justify-center space-y-14 pt-7 mt-32 md:mt-36 md:pt-5">
+    <img class="h-64 w-60 md:h-60" src="../../../assets/no-result-found.png">
+    <h1 class="text-2xl px-10 leading-snug text-center text-darkblue font-semibold uppercase">No questions available
+      at the moment</h1>
+  </div>
+</ng-template>
