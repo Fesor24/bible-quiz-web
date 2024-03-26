@@ -1,16 +1,19 @@
 import { createReducer, on } from "@ngrx/store";
 import { IQuestion } from "src/app/shared/models/question";
-import { loadQuestionsSuccess, updateQuestionScripture } from "./questions.actions";
+import { loadObjectivesSuccess, loadQuestionsSuccess, updateQuestionScripture } from "./questions.actions";
 import { QuestionSource } from "src/app/shared/enums/question-source.enum";
+import { IObjective } from "src/app/shared/models/objective";
 
 export interface IQuestionStore {
   bibleQuizzes: IQuestion[];
   author: IQuestion[];
+  objectives: IObjective[];
 }
 
 const initialState: IQuestionStore = {
   bibleQuizzes: [],
-  author: []
+  author: [],
+  objectives: []
 };
 
 export const questionReducer = createReducer(
@@ -34,5 +37,8 @@ export const questionReducer = createReducer(
 
       return({...state, bibleQuizzes: updatedQuizzesQuestions})
     }
+  }),
+  on(loadObjectivesSuccess, (state, action) => {
+    return({...state, objectives: action.data})
   })
 );
