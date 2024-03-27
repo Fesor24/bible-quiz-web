@@ -67,16 +67,22 @@ export class ObjectiveQuestionsComponent implements OnInit, OnDestroy {
     this.index--;
     localStorage.setItem(this.indexKey, this.index.toString());
     this.answer = undefined;
+    this.selectedOption = undefined;
     this.timer = 30;
     this.startTimer();
   }
 
   handleReset() {
     this.index = 0;
+    this.selectedOption = undefined;
+    this.answer = undefined;
   }
 
   setSelectedOption(option: string) {
-    this.selectedOption = option;
+    if(!this.answer){
+      this.selectedOption = option;
+    }
+
   }
 
   checkAnswer() {
