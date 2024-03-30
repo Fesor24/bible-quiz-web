@@ -144,6 +144,9 @@ export class QuestionComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   setTimerValue(timer: number): string {
+     if (timer == 10) {
+       this.sharedService.startTickingClock();
+     }
     if (timer < 10) {
       return `0${timer}`;
     } else {
@@ -156,6 +159,7 @@ export class QuestionComponent implements OnInit, OnDestroy, DoCheck {
       if (this.timer > 0) {
         this.timer--;
       } else {
+        this.sharedService.stopTickingClock();
         this.stopTimer();
         this.showAnswer = true;
       }
