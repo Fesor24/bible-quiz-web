@@ -4,7 +4,8 @@
   <div class="container mx-auto flex flex-col space-y-6 pb-10 mt-24 md:mt-24">
   <ng-container *ngIf="questions && !showCongratsPage;else congratsPage">
     <div>
-    <p class="text-center text-darkblue text-2xl font-extrabold md:text-3xl">00:{{setTimerValue(timer)}}</p>
+    <p class="text-center text-darkblue text-2xl font-extrabold md:text-3xl"
+    [ngClass]="{'text-red-600':timer <= 10}">00:{{setTimerValue(timer)}}</p>
   </div>
   <!-- Buttons -->
   <div class="flex items-center justify-center space-x-6">
