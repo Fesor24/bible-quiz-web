@@ -11,9 +11,20 @@ import { IScriptureSearchResult } from './models/bible-scripture-search';
 export class SharedService {
 
   baseUrl = environment.apiUrl;
+  private clockTick!: HTMLAudioElement;
+  private wrong!: HTMLAudioElement;
+  private correct!: HTMLAudioElement;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.clockTick = new Audio();
+    this.wrong = new Audio();
+    this.correct = new Audio();
 
+    this.wrong.src = '../../assets/sounds/wrong.mp3';
+    this.clockTick.src = '../../assets/sounds/ticking-clock.mp3';
+    this.correct.src = '../../assets/sounds/congrats.mp3';
+
+  }
 
   getScriptures(payload: any){
     return this.http.post<IApiResponse<IScriptureSearchResult, object, object>>(this.baseUrl + 'scriptures', payload, {observe: 'response'}).pipe(
@@ -21,4 +32,33 @@ export class SharedService {
 
     );
   }
+
+  startTickingClock(){
+    this.clockTick.play();
+  }
+
+  playWrongEffect(){
+    this.wrong.play();
+  }
+
+  playCorrectEffect(){
+    this.correct.play();
+  }
+
+  stopTickingClock(){
+    this.clockTick.pause();
+    this.clockTick.currentTime = 0;
+  }
+
+  stopWrongEffect(){
+    this.wrong.pause();
+    this.wrong.currentTime = 0;
+  }
+
+  stopCorrectEffect(){
+    this.correct.pause();
+    this.correct.currentTime = 0;
+  }
+
+
 }
