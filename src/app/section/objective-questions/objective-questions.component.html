@@ -3,7 +3,7 @@
     <ng-container *ngIf="questions && !showCongratsPage;else congratsPage">
       <div>
         <p class="text-center text-darkblue text-2xl font-extrabold md:text-3xl"
-          [ngClass]="{'text-red-600':timer < 10}">00:{{setTimerValue(timer)}}</p>
+          [ngClass]="{'text-red-600':timer <= 10}">00:{{setTimerValue(timer)}}</p>
       </div>
       <!-- Buttons -->
       <div class="flex items-center justify-center space-x-6">
@@ -13,6 +13,12 @@
           (click)="handlePrevious()"><i class="fa-solid fa-arrow-left"></i></p>
         <p class="bg-darkblue text-white px-4 cursor-pointer py-3 focus:outline-none rounded-full font-semibold text-sm md:text-xl md:px-4 md:py-3"
           (click)="handleReset()"><i class="fa-solid fa-ban"></i></p>
+        <p class="bg-darkblue text-white px-4 cursor-pointer py-3 focus:outline-none rounded-full font-semibold text-sm md:text-xl md:px-4 md:py-3"
+          (click)="toggleSoundEffect()">
+          <i class="fa-solid fa-volume-high" *ngIf="!soundEffectToggle"></i>
+          <i class="fa-solid fa-volume-xmark" *ngIf="soundEffectToggle"></i>
+
+        </p>
       </div>
 
       <!-- Question -->
@@ -24,22 +30,22 @@
 
       <!-- Options -->
       <div class="flex flex-col space-y-2 items-center justify-center">
-        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer"
+        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer outline-0"
           (click)="setSelectedOption('A')" [ngClass]="{'bg-orange-400 text-white': selectedOption === 'A'}"
           [ngClass]="{'bg-green-700 text-white': answer === 'A'}">
           A. {{questions[index].optionA}}
         </div>
-        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer"
+        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer outline-0"
           (click)="setSelectedOption('B')" [ngClass]="{'bg-orange-400 text-white': selectedOption === 'B'}"
           [ngClass]="{'bg-green-700 text-white': answer === 'B'}">
           B. {{questions[index].optionB}}
         </div>
-        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer"
+        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer outline-0"
           (click)="setSelectedOption('C')" [ngClass]="{'bg-orange-400 text-white': selectedOption === 'C'}"
           [ngClass]="{'bg-green-700 text-white': answer === 'C'}">
           C. {{questions[index].optionC}}
         </div>
-        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer"
+        <div class="rounded-xl border-2 border-darkblue py-4 w-[60%] px-5 text-darkblue cursor-pointer outline-0"
           (click)="setSelectedOption('D')" [ngClass]="{'bg-orange-400 text-white': selectedOption === 'D'}"
           [ngClass]="{'bg-green-700 text-white': answer === 'D'}">
           D. {{questions[index].optionD}}
